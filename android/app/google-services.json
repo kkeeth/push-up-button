@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "277641528903",
+    "project_id": "push-up-button",
+    "storage_bucket": "push-up-button.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277641528903:android:aa4acc779622cc40d0d362",
+        "android_client_info": {
+          "package_name": "com.example.push_up_button"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277641528903-b1rgrp2m7es9sr2oag3m7qj7b42a1fbt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4s8wKY6yR4IE1r2LIOxT_lItPABt-7JQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "277641528903-b1rgrp2m7es9sr2oag3m7qj7b42a1fbt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "277641528903-cpmrdocfpra6g2n0sqvpqe3pt4tiomj0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pushUpButton"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
