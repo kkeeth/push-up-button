@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.push_up_button">
+    <uses-sdk tools:overrideLibrary="io.flutter.plugins.firebase.firestore, io.flutter.plugins.firebase.core, com.google.firebase.firestore, com.google.firebase.firestore" />
    <application
         android:label="push_up_button"
         android:name="${applicationName}"
@@ -30,5 +32,5 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-    </application>
+   </application>
 </manifest>
