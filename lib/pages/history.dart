@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -82,6 +84,7 @@ class _HistoryState extends State<HistoryPage> {
                               style: TextStyle(
                                 fontSize: 24,
                                 height: 0,
+                                fontFamily: "Montserrat",
                                 color: NeumorphicTheme.defaultTextColor(context),
                               ),
                             ),
@@ -112,6 +115,7 @@ class _HistoryState extends State<HistoryPage> {
                               '${record['date']} ${record['time']}分${record['count']}回',
                               style: TextStyle(
                                 fontSize: 24,
+                                fontFamily: "Montserrat",
                                 height: 0,
                                 color: NeumorphicTheme.defaultTextColor(context),
                               ),
