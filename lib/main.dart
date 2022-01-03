@@ -1,5 +1,4 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'pages/home.dart';
@@ -17,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NeumorphicApp(
+      debugShowCheckedModeBanner: false,
       home: const HomePage(),
       routes: <String, WidgetBuilder> {
         '/home': (BuildContext context) => const HomePage(),
