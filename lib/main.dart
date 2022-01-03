@@ -1,22 +1,22 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'pages/home.dart';
 import 'pages/time_attack.dart';
 import 'pages/history.dart';
 import 'pages/break_through.dart';
 
-
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return NeumorphicApp(
+      debugShowCheckedModeBanner: false,
       home: const HomePage(),
       routes: <String, WidgetBuilder> {
         '/home': (BuildContext context) => const HomePage(),
