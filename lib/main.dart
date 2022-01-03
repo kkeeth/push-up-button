@@ -1,6 +1,11 @@
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
+
+import 'pages/home.dart';
+import 'pages/time_attack.dart';
+import 'pages/history.dart';
+import 'pages/break_through.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,64 +16,24 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Dog Name Voting",
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() {
-    return _MyHomePageState();
-  }
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _buildBody(),
-    );
-  }
-
-  Widget _buildBody() {
-    return StreamBuilder<QuerySnapshot>(  // Streamを監視して、イベントが通知される度にWidgetを更新する
-      stream: FirebaseFirestore.instance.collection("records").snapshots(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) return LinearProgressIndicator();
-        return _buildList(snapshot.data!.docs);
+    return NeumorphicApp(
+      home: const HomePage(),
+      routes: <String, WidgetBuilder> {
+        '/home': (BuildContext context) => const HomePage(),
+        '/time_attack': (BuildContext context) => const TimeAttack(),
+        '/break_through': (BuildContext context) => const BreakThrough(),
+        '/history': (BuildContext context) => const History(),
       },
-    );
-  }
-
-  Widget _buildList(List<DocumentSnapshot> snapList) {
-    return ListView.builder(
-        padding: const EdgeInsets.only(top: 50.0),
-        itemCount: snapList.length,
-        itemBuilder: (context, i) {
-          return _buildListItem(snapList[i]);
-        }
-    );
-  }
-
-  Widget _buildListItem(DocumentSnapshot snap) {
-    Map<String, dynamic>? data = snap.data() as Map<String, dynamic>;
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical:9.0),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        child: ListTile(
-          title: Text("time: " + data["time"].toString()),
-          trailing: Text("count: " + data["count"].toString()),
-          onTap: () => snap.reference.update({"count": FieldValue.increment(1)}),
-        ),
-      ),
+      title: '腕立てボタン',
+      themeMode: ThemeMode.light,
+      theme: const NeumorphicThemeData(
+        defaultTextColor: Color.fromRGBO(109, 117, 135, 1),
+        accentColor: Color.fromRGBO(239, 78, 78, 1),
+        variantColor: Color.fromRGBO(235, 236, 240, 1),
+        baseColor: Color.fromRGBO(235, 236, 240, 1),
+        depth: 8,
+        intensity: 0.5,
+        lightSource: LightSource.topLeft),
     );
   }
 }
