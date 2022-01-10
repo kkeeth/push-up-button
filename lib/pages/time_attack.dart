@@ -46,7 +46,7 @@ class TimeAttack extends StatelessWidget {
                           ),
                       ),
                     ),
-                    onPressed: () => Navigator.of(context).pop(),
+                    onPressed: () => Navigator.of(context).pushNamed("/push_up_button"),
                     style: NeumorphicStyle(
                       intensity: 0.8,
                       shape: NeumorphicShape.convex,
@@ -72,7 +72,7 @@ class TimeAttack extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onPressed: () => Navigator.of(context).pop(),
+                    onPressed: () => Navigator.of(context).pushNamed("/push_up_button"),
                     style: NeumorphicStyle(
                       intensity: 0.8,
                       shape: NeumorphicShape.convex,
@@ -98,7 +98,7 @@ class TimeAttack extends StatelessWidget {
                         ),
                       ),
                     ),
-                    onPressed: () => Navigator.of(context).pop(),
+                    onPressed: () => Navigator.of(context).pushNamed("/push_up_button"),
                     style: NeumorphicStyle(
                       intensity: 0.8,
                       shape: NeumorphicShape.convex,

@@ -1,5 +1,6 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:push_up_button/pages/push_up_button.dart';
 
 import 'pages/home.dart';
 import 'pages/time_attack.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         '/time_attack': (BuildContext context) => const TimeAttack(),
         '/break_through': (BuildContext context) => const BreakThrough(),
         '/history': (BuildContext context) => const HistoryPage(),
+        '/push_up_button': (BuildContext context) => const PushUpButton(),
       },
       title: '腕立てボタン',
       themeMode: ThemeMode.light,
