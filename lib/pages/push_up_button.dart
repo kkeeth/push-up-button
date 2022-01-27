@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:stop_watch_timer/stop_watch_timer.dart';
+import 'dart:async';
+import 'package:quiver/async.dart';
+
+import 'package:intl/intl.dart';
 
 final info_ready = "READY..";
 final info_go = "GO!!";
@@ -8,46 +11,39 @@ final info_go = "GO!!";
 //腕立て伏せページ
 class PushUpButton extends StatefulWidget {
   const PushUpButton({Key? key}) : super(key: key);
-
   @override
   _State createState() => _State();
 
 }
 
 class _State extends State<PushUpButton> {
-
-  final _isHours = true;
-  final _scrollController = ScrollController();
-
-  final StopWatchTimer _stopWatchTimer = StopWatchTimer(
-      mode: StopWatchMode.countDown,
-
-      // TODO 渡ってきた値で事前設定
-      presetMillisecond: StopWatchTimer.getMilliSecFromSecond(10),
-
-      onChange: (value) => print('onChange $value'),
-      onChangeRawSecond: (value) => print('onChangeRawSecond $value'),
-      onChangeRawMinute: (value) => print('onChangeRawMinute $value'),
-      onEnded: () {
-        print('onEnded');
-          Navigator.of(context).pushNamed("/next");
-      }
-  );
-
-
-  void nextPage() {
-    Navigator.of(context).pushNamed("/next");
-  }
-
-  void dispose() async {
-    super.dispose();
-    await _stopWatchTimer.dispose();
-  }
+  int _start = 10;
+  int _current = 10;
 
   void initState() {
-    super.initState();
-    //自動スタート
-    _stopWatchTimer.onExecute.add(StopWatchExecute.start);
+    startTimer();
+  }
+
+  // カウントダウン処理を行う関数を定義
+  void startTimer() {
+    CountdownTimer countDownTimer = new CountdownTimer(
+      new Duration(seconds: _start), //初期値
+      new Duration(seconds: 1), // 減らす幅
+    );
+
+    var sub = countDownTimer.listen(null);
+    sub.onData((duration) {
+      setState(() {
+        _current = _start - duration.elapsed.inSeconds; //毎秒減らしていく
+      });
+    });
+
+    // 終了時の処理 TODO その後結果画面へ
+    sub.onDone(() {
+      print("Done");
+      sub.cancel();
+      _current = 10;
+    });
   }
 
   @override
@@ -59,6 +55,7 @@ class _State extends State<PushUpButton> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Text("$_current秒", style: TextStyle(fontSize: 60)),
             Container(
               child: Text( info_ready,
                 style: TextStyle(
@@ -96,30 +93,7 @@ class _State extends State<PushUpButton> {
             /// Display stop watch time
             Padding(
               padding: const EdgeInsets.only(bottom: 0),
-              child: StreamBuilder<int>(
-                stream: _stopWatchTimer.rawTime,
-                initialData: _stopWatchTimer.rawTime.value,
-                builder: (context, snap) {
-                  final value = snap.data!;
-                  final displayTime =
-                  StopWatchTimer.getDisplayTime(value, hours: _isHours);
-                  return Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Text(
-                          displayTime,
-                          style: const TextStyle(
-                              fontSize: 40,
-                              fontFamily: 'Helvetica',
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ],
-                  );
-                },
               ),
-            ),
           ],
         ),
       ),

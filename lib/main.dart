@@ -6,6 +6,7 @@ import 'pages/home.dart';
 import 'pages/time_attack.dart';
 import 'pages/history.dart';
 import 'pages/break_through.dart';
+import 'pages/result.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/break_through': (BuildContext context) => const BreakThrough(),
         '/history': (BuildContext context) => const HistoryPage(),
         '/push_up_button': (BuildContext context) => const PushUpButton(),
+        '/result': (BuildContext context) => const Result(),
       },
       title: '腕立てボタン',
       themeMode: ThemeMode.light,
