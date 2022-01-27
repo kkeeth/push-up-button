@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         '/home': (BuildContext context) => const HomePage(),
         '/time_attack': (BuildContext context) => const TimeAttack(),
         '/break_through': (BuildContext context) => const BreakThrough(),
-        '/history': (BuildContext context) => const History(),
+        '/history': (BuildContext context) => const HistoryPage(),
       },
       title: '腕立てボタン',
       themeMode: ThemeMode.light,
