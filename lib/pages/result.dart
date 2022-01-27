@@ -1,8 +1,8 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-//限界突破メニューページ
-class BreakThrough extends StatelessWidget {
-  const BreakThrough({Key? key}) : super(key: key);
+//結果表示ページ
+class Result extends StatelessWidget {
+  const Result({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,18 +16,9 @@ class BreakThrough extends StatelessWidget {
               children: [
                 Container(
                   margin: const EdgeInsets.only(top: 108),
-                  child: Text('限界突破',
+                  child: Text('結果',
                     style: TextStyle(
                       fontSize: 32,
-                      color: NeumorphicTheme.defaultTextColor(context),
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 30),
-                  child: Text('時間を気にせず何回できるかやってみよう',
-                    style: TextStyle(
-                      fontSize: 18,
                       color: NeumorphicTheme.defaultTextColor(context),
                     ),
                   ),
@@ -38,32 +29,6 @@ class BreakThrough extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 24,
                       color: NeumorphicTheme.defaultTextColor(context),
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 25),
-                  child:
-                  NeumorphicButton(
-                    child: SizedBox(
-                      width: 300,
-                      height: 50,
-                      child: Text('始める',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: NeumorphicTheme.defaultTextColor(context),
-                        ),
-                      ),
-                    ),
-                    onPressed: () => Navigator.of(context).pushNamed("/push_up_button"),
-                    style: NeumorphicStyle(
-                      intensity: 0.8,
-                      shape: NeumorphicShape.convex,
-                      boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                      depth: 8,
-                      lightSource: LightSource.topLeft,
-                      color: NeumorphicTheme.baseColor(context),
                     ),
                   ),
                 ),
@@ -84,7 +49,7 @@ class BreakThrough extends StatelessWidget {
                   ),
                 ),
               ),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () => Navigator.of(context).pushNamed("/home"),
               style: NeumorphicStyle(
                 intensity: 0.8,
                 shape: NeumorphicShape.convex,
